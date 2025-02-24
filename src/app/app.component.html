@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Registro de persona</h1>
+        <form id="formPersona" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <fieldset>
+                <legend>Datos personales</legend>
+                <label for="nombre">Nombre:</label>
+                <input type="text" formControlName="nombre" name="nombre" id="nombre" required>
+
+                <label for="apellido">Apellido:</label>
+                <input type="text" formControlName="apellido" name="apellido" id="apellido" required>
+
+                <label for="edad">Edad:</label>
+                <input type="number" formControlName="edad" name="edad" id="edad" required min="1">
+
+                <label for="foto">Foto De Perfil</label>
+                <input type="file" formControlName="foto" name="foto" id="foto" required>
+
+                <label for="genero">Genero</label>
+                <select name="genero" formControlName="genero" id="genero">
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="Otros">Otros</option>
+                </select>
+            </fieldset>
+
+            <fieldset>
+                <legend>Datos de contactos</legend>
+                <label for="telefono">Telefono:</label>
+                <input type="text" formControlName="telefono" name="telefono" id="telefono" required>
+
+                <label for="email">Correo Electronico:</label>
+                <input type="email" formControlName="email" name="email" id="email" required>
+
+                <label for="password">Contraseña:</label>
+                <input type="password" formControlName="password" name="password" id="password" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Datos Adicionales</legend>
+                <label for="direccion">Direccion:</label>
+                <textarea id="direccion" formControlName="direccion"></textarea>
+
+                <label for="fecha">Fecha Nacimiento:</label>
+                <input type="date" formControlName="fecha" name="fecha" id="fecha" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Preferencias</legend>
+                <label for="colorFavorito">Color Favorito:</label>
+                <input type="color" formControlName="preferencias" name="colorFavorito" id="colorFavorito">
+            </fieldset>
+            
+            <fieldset>
+                <legend>Terminos y condiciones</legend>
+                <label for="aceptoTerminos">Acepto los terminos y condiciones además nuestra politica de privacidad:</label>
+                <input type="checkbox" formControlName="terminos" name="aceptoTerminos" id="aceptoTerminos">
+            </fieldset>
+
+            <input type="submit" value="Guardar">
+        </form>
+
+        <hr>
+        <h2>Personas registradas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>Genero</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    <th>Direccion</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>Color Favorito</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let persona of personas">
+                    <td>{{persona.nombre}}</td>
+                    <td>{{persona.apellido}}</td>
+                    <td>{{persona.edad}}</td>
+                    <td>{{persona.genero}}</td>
+                    <td>{{persona.telefono}}</td>
+                    <td>{{persona.email}}</td>
+                    <td>{{persona.direccion}}</td>
+                    <td>{{persona.fecha}}</td>
+                    <td><div [style.background-color]="persona.preferencias" style="width: 50px; height: 20px;"></div></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html> 
