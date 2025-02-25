@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
       const persona = { ...this.form.value };
       this.personas.push(persona);
       console.log('Formulario enviado:', persona);
-      this.form.reset(); // Reiniciar el formulario después de enviarlo
+      this.form.reset();
     } else {
       console.log('Formulario no válido');
     }
